@@ -1,0 +1,55 @@
+<a href="../index.html" style="float: right">Go Back To Home Page</a>
+<h3>Your Cart:</h3>
+
+<div id="shopping-cart">
+  <article class="cart"></article>
+  <div *ngIf="cart.length == 0">
+    <h2>Uh-oh Your Cart looks empty</h2>
+  </div>
+  <div *ngIf="cart.length > 0">
+    <div *ngFor="let c of cart; let i = index">
+      <div id="{{ c.alt }}r">
+        <article class="remove-item">
+          <div class="flex-container-cart">
+            <div class="flex-item-cart">
+              <img
+                src="../{{ c.img }}"
+                alt="{{ c.alt }}"
+                width="200"
+                height="200"
+              />
+            </div>
+            <div id="{{ c.id }}" class="description_cart">
+              <p class="checkout">{{ c.name }}</p>
+              <p class="price_cart">Price=${{ c.price }}</p>
+              <div id="{{ c.id }}">
+                <input
+                  type="checkbox"
+                  (click)="calc_total(); remove_item(i)"
+                  id="{{ c.value }}"
+                  class="btn btn-small"
+                  value="{{ c.value }}"
+                />
+                <label for="{{ c.value }}" class="cart cart-small"
+                  >Remove Item</label
+                >
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="total">
+  <p class="total" style="float: right; position: relative; right: 15px">
+    Your total: ${{ calc_total() }}
+  </p>
+</div>
+<br /><br /><br />
+<div style="text-align: center; align-items: center">
+  <button value="Submit" type="submit">Checkout</button>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
